@@ -1,0 +1,9 @@
+use [BDTest]
+go
+
+--b.	Indicar cuales propietarios tienen al menos una propiedad sin arrendar.
+	select a.*
+	from Propietarios a inner join Propiedad b
+		on a.idPropietarios = b.idPropietario
+	where b.idPropiedad not in (select c.idPropiedad from Arriendos c)
+

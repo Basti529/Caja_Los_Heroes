@@ -1,0 +1,11 @@
+use [BDTest]
+go
+
+--c.	Indicar cuantas propiedades tiene cada propietario por cada país.
+	select   COUNT(*) as CantidadPropiedades
+			,b.nombre as 'NombrePropietario'
+			,a.pais
+	from Propiedad a inner join Propietarios b
+		on a.idPropietario = b.idPropietarios
+	group by b.nombre, a.pais
+

@@ -1,0 +1,11 @@
+use [BDTest]
+go
+
+--e.	Indicar cuales arrendatarios arriendan fuera de chile.
+	select a.nombre as 'NombreArrendatario'
+	from  Arrendatario a inner join Arriendos b
+		on a.idArrendatario = b.idArrendatario
+	inner join Propiedad c
+		on c.idPropiedad = b.idPropiedad
+	and c.pais <> 'Chile'
+

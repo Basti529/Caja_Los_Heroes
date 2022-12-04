@@ -1,0 +1,11 @@
+use [BDTest]
+go
+
+--f.	Indicar cuales son los 3 países que el monto promedio de arriendo son los más altos.
+	select top 3 a.pais
+				,AVG(b.monto)
+	from Propiedad a inner join Arriendos b
+		on a.idPropiedad = b.idPropiedad
+	group by a.pais
+	order by AVG(b.monto) desc
+

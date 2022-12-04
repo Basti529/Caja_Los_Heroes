@@ -1,0 +1,9 @@
+use [BDTest]
+go
+
+
+--d.	Indicar cuales propietarios son también arrendatarios.
+	select	 a.nombre
+	from Propietarios a
+	where a.rutPropietario in (select b.rutArrendatario from Arrendatario b)
+

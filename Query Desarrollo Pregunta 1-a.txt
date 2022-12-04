@@ -1,0 +1,12 @@
+use [BDTest]
+go
+
+--a.	Indicar cuales arrendatarios sus arriendos vencen el próximo mes.
+	select	 a.*
+			,b.fechaFin
+			,Month(b.fechaFin) as 'MesFechaFin'
+			,Month(dateadd(month,1,(GETDATE()))) as 'MesProximo'
+	from Arrendatario a inner join Arriendos b
+		on a.idArrendatario = b.idArriendos
+	where Month(b.fechaFin) = Month(dateadd(month,1,(GETDATE())))
+

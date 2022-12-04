@@ -1,0 +1,10 @@
+use [BDTest]
+go
+
+--g.	Indicar el monto promedio, mínimo y máximo que pagan arrendatarios que también son propietarios.
+	select   AVG(monto) as 'MontoPromedio'
+			,MIN(monto) as 'MontoMinimo'
+			,MAX(monto) as 'MontoMaximo'
+	from Arriendos a inner join Propietarios b
+		on a.idPropietarios = b.idPropietarios
+	where b.rutPropietario in (select c.rutArrendatario from Arrendatario c)
